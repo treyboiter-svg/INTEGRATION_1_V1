@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OverlineEdge v8</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d1117;color:#e6edf3;font-family:-apple-system,Segoe UI,Arial,sans-serif;padding:16px}
+h1{font-size:18px;font-weight:700;color:#58a6ff;margin-bottom:8px}
+.topbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+button,select{background:#161b22;color:#e6edf3;border:1px solid #30363d;padding:5px 12px;border-radius:6px;font-size:13px;cursor:pointer}
+button:hover{background:#21262d}
+.st{font-size:12px;color:#8b949e} .cd{font-size:12px;color:#3fb950;font-weight:600}
+.tabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.tab{background:#161b22;border:1px solid #30363d;color:#8b949e;padding:5px 14px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;transition:all .15s}
+.tab.active{background:#1f6feb;color:#fff;border-color:#1f6feb}
+.cnt{background:#30363d;color:#e6edf3;border-radius:10px;padding:1px 6px;font-size:11px;margin-left:4px}
+.tab.active .cnt{background:#0d4a8a}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px}
+th{background:#161b22;padding:7px 8px;text-align:left;border-bottom:2px solid #21262d;white-space:nowrap;font-size:11px;color:#8b949e;text-transform:uppercase;letter-spacing:.4px}
+td{padding:7px 8px;border-bottom:1px solid #1a1f27;vertical-align:middle}
+tr.gr:hover td{background:#161b22;cursor:pointer}
+.pos{color:#3fb950;font-weight:600}.neg{color:#f85149;font-weight:600}.neu{color:#8b949e}
+.badge{display:inline-block;padding:2px 7px;border-radius:4px;font-size:11px;font-weight:700;text-transform:uppercase}
+.sp{background:#21262d;color:#58a6ff}.gn{background:#1a4d2e;color:#3fb950}
+.ye{background:#4d3b00;color:#e3b341}.gy{background:#21262d;color:#6e7681}
+.sec{font-size:11px;color:#8b949e;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin:12px 0 5px;padding:4px 0;border-bottom:1px solid #21262d}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-bottom:8px}
+.bcard{background:#0d1117;border:1px solid #21262d;border-radius:6px;padding:9px 11px}
+.bn{font-size:11px;font-weight:700;color:#58a6ff;margin-bottom:5px;text-transform:uppercase;letter-spacing:.3px}
+.br{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px solid #161b22}
+.br:last-child{border-bottom:none}.lbl{color:#8b949e}
+.ei{padding:14px 16px}
+.mtabs{display:flex;gap:4px;margin-bottom:10px;flex-wrap:wrap}
+.mt{background:#161b22;border:1px solid #30363d;color:#8b949e;padding:3px 11px;border-radius:4px;cursor:pointer;font-size:11px;transition:all .1s}
+.mt.active{background:#21262d;color:#e6edf3;border-color:#58a6ff}
+.mc{display:none}.mc.active{display:block}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.kn{color:#9c5cf5;font-size:11px;font-weight:700;margin-bottom:5px}
+.pn{color:#00a3ff;font-size:11px;font-weight:700;margin-bottom:5px}
+.ds{padding:9px 12px;background:#0d1117;border:1px solid #21262d;border-radius:6px;margin-top:8px}
+.drow{display:flex;align-items:center;gap:8px;margin-bottom:5px;font-size:12px}
+.dbw{flex:1;background:#21262d;border-radius:3px;height:5px;overflow:hidden}
+.db{height:5px;border-radius:3px}.dg{background:#3fb950}.dy{background:#e3b341}.dgy{background:#484f58}
+.no{text-align:center;padding:40px;color:#8b949e;font-size:14px}
+.erow{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.ebtn{background:#21262d;color:#e6edf3;border:1px solid #30363d;padding:5px 12px;border-radius:6px;font-size:12px;cursor:pointer;text-decoration:none;display:inline-block}
+.ebtn:hover{background:#30363d}.hidden{display:none}
+</style>
+</head>
+<body>
+<h1>⚡ OverlineEdge <span style="color:#8b949e;font-size:13px;font-weight:400">v8</span></h1>
+<div class="topbar">
+  <button onclick="loadData(true)">🔄 Refresh Now</button>
+  <span class="st" id="stEl">Loading...</span>
+  <span class="cd" id="cdEl"></span>
+</div>
+<div class="erow">
+  <a class="ebtn" id="expAll" href="http://127.0.0.1:8000/api/export/all" target="_blank">⬇ Export All (CSV)</a>
+  <a class="ebtn" id="expSport" href="http://127.0.0.1:8000/api/export/all" target="_blank">⬇ Export Sport (CSV)</a>
+</div>
+<div class="tabs" id="tabBar"></div>
+<div id="mainContent"></div>
+<script>
+const API="http://127.0.0.1:8000";
+let D={},activeSport="all",timer,cdSec=120;
+const dash=()=>'<span class="neu">—</span>';
+function fmtOdds(v){if(v==null)return dash();return`<span class="${v>0?'pos':'neg'}">${v>0?'+':''}${v}</span>`;}
+function fmtPct(v,d=2){if(v==null)return dash();const n=parseFloat(v);if(isNaN(n))return dash();return`<span class="${n>50?'pos':n<50?'neg':'neu'}">${n.toFixed(d)}%</span>`;}
+function fmtEV(v){if(v==null)return dash();const n=parseFloat(v);if(isNaN(n))return dash();return`<span class="${n>0?'pos':'neg'}">${n>0?'+':''}${n.toFixed(2)}%</span>`;}
+function i2a(p){if(p==null)return null;const pr=p/100;if(pr<=0||pr>=1)return null;return Math.round(pr>=0.5?-100*pr/(1-pr):100*(1-pr)/pr);}
+function fmtDisp(v){const n=parseFloat(v);if(isNaN(n))return{html:dash(),bc:'dgy',val:0};
+  let cls='gy',bc='dgy';if(n>=3){cls='gn';bc='dg';}else if(n>=1){cls='ye';bc='dy';}
+  return{html:`<span class="badge ${cls}">${n.toFixed(2)}%</span>`,bc,val:n};}
+async function loadData(manual=false){
+  if(manual)document.getElementById('stEl').textContent='Refreshing...';
+  try{
+    const r=await fetch(`${API}/api/dashboard`);
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    D=await r.json();buildTabs();render();
+    document.getElementById('stEl').textContent='Updated '+new Date().toLocaleTimeString();
+    resetCD();
+  }catch(e){
+    document.getElementById('stEl').textContent='⚠ Error: '+e.message+' — Is backend running? Run run.bat first.';
+  }
+}
+function resetCD(){clearInterval(timer);cdSec=120;timer=setInterval(()=>{document.getElementById('cdEl').textContent=`Auto-refresh: ${--cdSec}s`;if(cdSec<=0)loadData();},1000);}
+function buildTabs(){
+  const c=document.getElementById('tabBar');c.innerHTML='';
+  ['all',...Object.keys(D)].forEach(s=>{
+    const n=s==='all'?Object.values(D).reduce((a,x)=>a+(x.games||[]).length,0):(D[s]?.games||[]).length;
+    const d=document.createElement('div');d.className='tab'+(activeSport===s?' active':'');
+    d.innerHTML=`${s.toUpperCase()} <span class="cnt">${n}</span>`;
+    d.onclick=()=>{activeSport=s;document.getElementById('expSport').href=s==='all'?`${API}/api/export/all`:`${API}/api/export/${s}`;buildTabs();render();};
+    c.appendChild(d);
+  });
+}
+function render(){
+  const c=document.getElementById('mainContent');c.innerHTML='';
+  const sports=activeSport==='all'?Object.keys(D):[activeSport];
+  let total=0;
+  sports.forEach(sp=>{
+    const games=(D[sp]?.games||[]);if(!games.length)return;total+=games.length;
+    const sec=document.createElement('div');
+    sec.innerHTML=`<div class="sec">${sp.toUpperCase()} — ${games.length} game${games.length!==1?'s':''}</div>`;
+    const tbl=document.createElement('table');
+    tbl.innerHTML=`<thead><tr><th></th><th>Matchup</th><th>Time</th><th>Away ML</th><th>Home ML</th><th>Away NoVig%</th><th>Home NoVig%</th><th>Power (A/H)</th><th>Kalshi Disp</th><th>Poly Disp</th><th>Books</th></tr></thead>`;
+    const tb=document.createElement('tbody');
+    games.forEach(g=>{
+      const cons=g.consensus||{};const mh=g.implied_matrix_home||{};const ma=g.implied_matrix_away||{};
+      const kd=fmtDisp(mh.kalshi_disparity);const pd=fmtDisp(mh.poly_disparity);
+      const row=document.createElement('tr');row.className='gr';
+      row.innerHTML=`<td><span class="badge sp">${sp.toUpperCase()}</span></td>
+        <td><strong>${g.away}</strong> <span style="color:#484f58">@</span> <strong>${g.home}</strong></td>
+        <td style="color:#8b949e;white-space:nowrap;font-size:11px">${g.commence||'—'}</td>
+        <td>${fmtOdds((cons.away||{}).american)}</td><td>${fmtOdds((cons.home||{}).american)}</td>
+        <td>${fmtPct((cons.away||{}).no_vig_implied)}</td><td>${fmtPct((cons.home||{}).no_vig_implied)}</td>
+        <td style="font-size:11px">${fmtPct(ma.power_odds)} / ${fmtPct(mh.power_odds)}</td>
+        <td>${kd.html}</td><td>${pd.html}</td>
+        <td style="color:#8b949e;font-size:11px">${Object.keys(g.per_book||{}).length}</td>`;
+      const er=document.createElement('tr');const etd=document.createElement('td');etd.colSpan=11;etd.style.padding='0';
+      etd.appendChild(buildExpand(g,sp));er.appendChild(etd);er.classList.add('hidden');
+      row.addEventListener('click',()=>er.classList.toggle('hidden'));
+      tb.appendChild(row);tb.appendChild(er);
+    });
+    tbl.appendChild(tb);sec.appendChild(tbl);c.appendChild(sec);
+  });
+  if(!total)c.innerHTML=`<div class="no">No games today for this sport.<br><span style="font-size:12px;color:#484f58">Off-season or check backend is running.</span></div>`;
+}
+function buildExpand(g,sp){
+  const wrap=document.createElement('div');wrap.className='ei';
+  const labels=['📊 Moneyline','📐 Spread','🎯 Total O/U','🔮 Pred Markets','📈 Disparity','⚡ Power Method'];
+  const panels=[];
+  const mbar=document.createElement('div');mbar.className='mtabs';
+  labels.forEach((lbl,i)=>{
+    const btn=document.createElement('button');btn.className='mt'+(i===0?' active':'');
+    btn.textContent=lbl;
+    const p=document.createElement('div');p.className='mc'+(i===0?' active':'');
+    panels.push(p);
+    btn.onclick=()=>{wrap.querySelectorAll('.mt').forEach(b=>b.classList.remove('active'));panels.forEach(x=>x.classList.remove('active'));btn.classList.add('active');p.classList.add('active');};
+    mbar.appendChild(btn);
+  });
+  wrap.appendChild(mbar);
+  const pb=g.per_book||{};const cons=g.consensus||{};
+  // ML tab
+  let h=`<div class="bgrid">`;
+  Object.entries(pb).forEach(([bk,bd])=>{
+    h+=`<div class="bcard"><div class="bn">${bk}</div>
+      <div class="br"><span class="lbl">${g.away} ML</span><span>${fmtOdds(bd.away_american)}</span></div>
+      <div class="br"><span class="lbl">${g.home} ML</span><span>${fmtOdds(bd.home_american)}</span></div>
+      <div class="br"><span class="lbl">Away Raw%</span><span>${fmtPct(bd.away_raw)}</span></div>
+      <div class="br"><span class="lbl">Home Raw%</span><span>${fmtPct(bd.home_raw)}</span></div>
+      <div class="br"><span class="lbl">Away NoVig (Prop)</span><span>${fmtPct(bd.away_nv_prop)}</span></div>
+      <div class="br"><span class="lbl">Home NoVig (Prop)</span><span>${fmtPct(bd.home_nv_prop)}</span></div>
+      <div class="br"><span class="lbl">Away NoVig (Power)</span><span>${fmtPct(bd.away_nv_power)}</span></div>
+      <div class="br"><span class="lbl">Home NoVig (Power)</span><span>${fmtPct(bd.home_nv_power)}</span></div>
+      <div class="br"><span class="lbl">Vig %</span><span style="color:#e3b341">${bd.vig_pct!=null?bd.vig_pct.toFixed(3)+'%':'—'}</span></div>
+    </div>`;
+  });
+  h+=`</div><div class="bcard" style="margin-top:8px"><div class="bn" style="color:#e3b341">CONSENSUS (avg all books)</div>
+    <div class="br"><span class="lbl">Away ML (no-vig)</span><span>${fmtOdds((cons.away||{}).american)}</span></div>
+    <div class="br"><span class="lbl">Home ML (no-vig)</span><span>${fmtOdds((cons.home||{}).american)}</span></div>
+    <div class="br"><span class="lbl">Away Raw Implied</span><span>${fmtPct((cons.away||{}).raw_implied)}</span></div>
+    <div class="br"><span class="lbl">Home Raw Implied</span><span>${fmtPct((cons.home||{}).raw_implied)}</span></div>
+    <div class="br"><span class="lbl">Away True No-Vig%</span><span>${fmtPct((cons.away||{}).no_vig_implied)}</span></div>
+    <div class="br"><span class="lbl">Home True No-Vig%</span><span>${fmtPct((cons.home||{}).no_vig_implied)}</span></div>
+  </div>`;
+  panels[0].innerHTML=h;
+  // Spread tab
+  let sh=`<div class="bgrid">`;
+  Object.entries(pb).forEach(([bk,bd])=>{
+    const s1=bd.spreads?.home||{},s2=bd.spreads?.away||{};
+    const pt1=s1.point!=null?(s1.point>0?'+':'')+s1.point:'—';
+    const pt2=s2.point!=null?(s2.point>0?'+':'')+s2.point:'—';
+    sh+=`<div class="bcard"><div class="bn">${bk}</div>
+      <div class="br"><span class="lbl">Home Spread</span><span>${pt1} ${fmtOdds(s1.american)}</span></div>
+      <div class="br"><span class="lbl">Home Impl%</span><span>${fmtPct(s1.implied)}</span></div>
+      <div class="br"><span class="lbl">Away Spread</span><span>${pt2} ${fmtOdds(s2.american)}</span></div>
+      <div class="br"><span class="lbl">Away Impl%</span><span>${fmtPct(s2.implied)}</span></div>
+    </div>`;
+  });
+  sh+=`</div>`;const sprcons=g.spread||{};if(Object.keys(sprcons).length){
+    sh+=`<div class="bcard" style="margin-top:8px"><div class="bn" style="color:#e3b341">CONSENSUS SPREAD</div>`;
+    Object.entries(sprcons).forEach(([s,d])=>{sh+=`<div class="br"><span class="lbl">${s}</span><span>${fmtPct(d.implied)}</span></div>`;});
+    sh+=`</div>`;
+  }
+  panels[1].innerHTML=sh;
+  // Totals tab
+  let th=`<div class="bgrid">`;
+  Object.entries(pb).forEach(([bk,bd])=>{
+    const ov=bd.totals?.Over||{},un=bd.totals?.Under||{};
+    th+=`<div class="bcard"><div class="bn">${bk}</div>
+      <div class="br"><span class="lbl">Over ${ov.point||''}</span><span>${fmtOdds(ov.american)} ${fmtPct(ov.implied)}</span></div>
+      <div class="br"><span class="lbl">Under ${un.point||''}</span><span>${fmtOdds(un.american)} ${fmtPct(un.implied)}</span></div>
+    </div>`;
+  });
+  th+=`</div>`;const totcons=g.totals||{};if(Object.keys(totcons).length){
+    th+=`<div class="bcard" style="margin-top:8px"><div class="bn" style="color:#e3b341">CONSENSUS TOTALS</div>`;
+    Object.entries(totcons).forEach(([s,d])=>{th+=`<div class="br"><span class="lbl">${s}</span><span>${fmtPct(d.implied)}</span></div>`;});
+    th+=`</div>`;
+  }
+  panels[2].innerHTML=th;
+  // Pred markets tab
+  const kal=g.kalshi||{},pol=g.polymarket||{};const mh=g.implied_matrix_home||{},ma=g.implied_matrix_away||{};
+  panels[3].innerHTML=`<div class="pgrid">
+    <div class="bcard"><div class="kn">🟣 KALSHI</div>
+      <div class="br"><span class="lbl">Market</span><span style="font-size:10px;max-width:150px;text-align:right">${kal.title||'No match found'}</span></div>
+      <div class="br"><span class="lbl">Home Win%</span><span>${fmtPct(kal.home_implied)}</span></div>
+      <div class="br"><span class="lbl">Away Win%</span><span>${kal.home_implied!=null?fmtPct(100-kal.home_implied):dash()}</span></div>
+      <div class="br"><span class="lbl">American Equiv</span><span>${fmtOdds(kal.american)}</span></div>
+      <div class="br"><span class="lbl">Volume</span><span>${kal.volume!=null?'$'+Number(kal.volume).toLocaleString():dash()}</span></div>
+    </div>
+    <div class="bcard"><div class="pn">🔵 POLYMARKET</div>
+      <div class="br"><span class="lbl">Market</span><span style="font-size:10px;max-width:150px;text-align:right">${pol.question||'No match found'}</span></div>
+      <div class="br"><span class="lbl">Home Win%</span><span>${fmtPct(pol.home_implied)}</span></div>
+      <div class="br"><span class="lbl">Away Win%</span><span>${fmtPct(pol.away_implied)}</span></div>
+      <div class="br"><span class="lbl">American Equiv</span><span>${fmtOdds(pol.american)}</span></div>
+    </div>
+  </div>
+  <div class="bcard" style="margin-top:8px"><div class="bn" style="color:#e3b341">POWER ODDS CONSENSUS</div>
+    <div class="br"><span class="lbl">Away Power%</span><span>${fmtPct(ma.power_odds)}</span></div>
+    <div class="br"><span class="lbl">Home Power%</span><span>${fmtPct(mh.power_odds)}</span></div>
+    <div class="br"><span class="lbl">Away Power ML</span><span>${fmtOdds(i2a(ma.power_odds))}</span></div>
+    <div class="br"><span class="lbl">Home Power ML</span><span>${fmtOdds(i2a(mh.power_odds))}</span></div>
+  </div>`;
+  // Disparity tab
+  const srcs=[
+    {l:'Kalshi vs Books — Home',d:mh.kalshi_disparity,ev:mh.kalshi_ev,bk:mh.consensus_bookmaker,pm:mh.kalshi},
+    {l:'Kalshi vs Books — Away',d:ma.kalshi_disparity,ev:ma.kalshi_ev,bk:ma.consensus_bookmaker,pm:ma.kalshi},
+    {l:'Polymarket vs Books — Home',d:mh.poly_disparity,ev:mh.poly_ev,bk:mh.consensus_bookmaker,pm:mh.polymarket},
+    {l:'Polymarket vs Books — Away',d:ma.poly_disparity,ev:ma.poly_ev,bk:ma.consensus_bookmaker,pm:ma.polymarket},
+  ];
+  let dh=`<div class="ds"><div style="font-size:11px;color:#8b949e;margin-bottom:10px">Disparity = gap between book no-vig% and prediction market%. 🟢 ≥3% edge | 🟡 1–3% | ⚫ &lt;1%</div>`;
+  srcs.forEach(s=>{
+    const fd=fmtDisp(s.d);const bw=fd.val>0?Math.min((fd.val/10)*100,100):0;
+    dh+=`<div class="drow"><span style="min-width:250px;color:#8b949e;font-size:12px">${s.l}</span>${fd.html}
+      <div class="dbw"><div class="db ${fd.bc}" style="width:${bw}%"></div></div>
+      <span style="font-size:11px;color:#8b949e;min-width:90px;text-align:right">EV: ${fmtEV(s.ev)}</span></div>
+    <div style="font-size:10px;color:#484f58;margin-bottom:8px;padding-left:258px">Books: ${s.bk!=null?s.bk.toFixed(2)+'%':'—'} &nbsp;|&nbsp; Market: ${s.pm!=null?s.pm.toFixed(2)+'%':'—'}</div>`;
+  });
+  dh+=`</div>`;panels[4].innerHTML=dh;
+  // Power method tab
+  let pm2=`<div class="bcard" style="margin-bottom:10px"><div class="bn" style="color:#e3b341">⚡ POWER METHOD EXPLAINED</div>
+    <div class="br" style="flex-direction:column;align-items:flex-start;padding:6px 0">
+      <span style="color:#8b949e;font-size:11px;line-height:1.6">
+        Finds <strong style="color:#58a6ff">k</strong> where <strong style="color:#58a6ff">p₁ᵏ + p₂ᵏ = 1</strong> via Newton-Raphson iteration.<br>
+        Favorite absorbs <strong>less</strong> vig. Underdog absorbs <strong>more</strong>. Mirrors Pinnacle methodology.
+      </span>
+    </div>
+  </div><div class="bgrid">`;
+  Object.entries(pb).forEach(([bk,bd])=>{
+    if(bd.home_raw==null)return;
+    pm2+=`<div class="bcard"><div class="bn">${bk}</div>
+      <div style="font-size:10px;color:#8b949e;margin-bottom:4px">${g.home}</div>
+      <div class="br"><span class="lbl">Raw Implied</span><span>${fmtPct(bd.home_raw)}</span></div>
+      <div class="br"><span class="lbl">Proportional</span><span>${fmtPct(bd.home_nv_prop)}</span></div>
+      <div class="br"><span class="lbl" style="color:#9c5cf5">Power Method</span><span>${fmtPct(bd.home_nv_power)}</span></div>
+      <div style="font-size:10px;color:#8b949e;margin:6px 0 4px">${g.away}</div>
+      <div class="br"><span class="lbl">Raw Implied</span><span>${fmtPct(bd.away_raw)}</span></div>
+      <div class="br"><span class="lbl">Proportional</span><span>${fmtPct(bd.away_nv_prop)}</span></div>
+      <div class="br"><span class="lbl" style="color:#9c5cf5">Power Method</span><span>${fmtPct(bd.away_nv_power)}</span></div>
+      <div class="br"><span class="lbl">Vig%</span><span style="color:#e3b341">${bd.vig_pct!=null?bd.vig_pct.toFixed(3)+'%':'—'}</span></div>
+    </div>`;
+  });
+  pm2+=`</div>`;panels[5].innerHTML=pm2;
+  panels.forEach(p=>wrap.appendChild(p));
+  return wrap;
+}
+loadData();
+</script>
+</body>
+</html>

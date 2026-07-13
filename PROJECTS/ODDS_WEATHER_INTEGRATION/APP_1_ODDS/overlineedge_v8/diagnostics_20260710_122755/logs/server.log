@@ -1,0 +1,283 @@
+2026-07-10 11:53:22,831 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=39&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:22,853 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAABGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:32,507 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,513 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,520 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:53:32,525 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:53:32,529 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,534 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:53:32,540 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,544 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:53:32,549 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:53:32,554 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,559 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:53:32,564 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:53:32,570 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:53:32,576 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:53:32,581 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:53:32,589 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,598 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,607 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:53:32,613 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:53:32,617 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,621 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:53:32,626 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,630 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:53:32,634 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:53:32,638 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,642 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:53:32,646 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:53:32,650 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:53:32,653 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:53:32,657 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:53:32,661 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,665 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,669 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:53:32,673 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:53:32,677 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,681 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:53:32,685 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,688 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:53:32,691 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:53:32,695 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:53:32,699 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:53:32,702 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:53:32,706 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:53:32,708 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:53:32,712 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:53:32,841 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXMLBGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:32,853 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=3&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:34,873 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10187&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:34,927 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNFLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:43,909 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10345&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:43,965 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNBAGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:44,043 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10346&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:44,057 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNHLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:54,494 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=39&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:54,516 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAABGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:55,069 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10210&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:53:55,111 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAAFGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:54:40,788 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:40,798 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:40,817 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:54:40,834 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:54:40,846 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:40,858 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:54:40,872 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:40,884 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:54:40,903 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:54:40,921 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:40,943 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:54:40,993 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:54:41,036 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:54:41,065 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:54:41,097 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:54:41,127 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,205 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,260 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:54:41,292 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:54:41,341 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,382 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:54:41,439 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,472 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:54:41,495 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:54:41,513 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,532 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:54:41,551 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:54:41,571 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:54:41,583 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:54:41,602 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:54:41,623 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,644 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,677 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:54:41,700 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:54:41,720 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,742 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:54:41,765 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,782 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:54:41,809 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:54:41,890 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:54:41,943 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:54:41,967 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:54:41,984 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:54:41,999 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:54:42,013 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:54:42,199 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=3&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:54:42,361 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXMLBGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:54:45,011 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNFLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:54:45,072 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10187&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:03,296 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10346&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:03,384 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNHLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:04,327 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10345&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:04,375 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNBAGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:21,220 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=39&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:21,277 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAABGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:24,388 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10210&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:24,452 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAAFGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:41,483 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,489 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,503 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:55:41,510 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:55:41,519 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,529 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:55:41,538 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,544 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:55:41,556 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:55:41,567 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,580 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:55:41,587 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:55:41,596 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:55:41,609 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers Ohtani (R)' reason=unresolved_team_or_same_team scores=(0.545, 0.412)
+2026-07-10 11:55:41,624 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:55:41,635 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,645 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,653 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:55:41,659 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:55:41,666 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,679 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:55:41,692 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,700 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:55:41,704 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:55:41,708 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,715 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:55:41,722 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:55:41,728 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:55:41,739 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers Ohtani (R)' reason=unresolved_team_or_same_team scores=(0.545, 0.412)
+2026-07-10 11:55:41,748 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:55:41,755 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,761 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,776 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:55:41,785 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:55:41,796 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,810 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:55:41,822 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,831 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:55:41,838 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:55:41,845 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:55:41,853 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:55:41,862 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:55:41,870 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:55:41,879 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers Ohtani (R)' reason=unresolved_team_or_same_team scores=(0.545, 0.412)
+2026-07-10 11:55:41,884 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:55:42,085 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=3&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:42,114 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXMLBGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:47,180 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10187&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:47,353 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNFLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:58,361 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10345&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:55:58,404 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNBAGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:56:03,267 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10346&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:56:03,280 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNHLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:56:17,587 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10210&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:56:17,728 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAAFGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:56:22,175 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=39&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:56:22,198 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAABGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:23,139 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,146 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,156 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:58:23,163 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:58:23,170 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,178 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:58:23,186 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,195 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:58:23,209 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:58:23,217 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,226 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:58:23,234 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:58:23,242 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:58:23,247 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:58:23,253 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:58:23,262 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,268 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,277 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:58:23,283 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:58:23,288 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,298 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:58:23,305 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,311 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:58:23,323 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:58:23,329 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,339 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:58:23,347 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:58:23,352 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:58:23,356 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:58:23,368 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:58:23,385 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,398 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,413 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 11:58:23,423 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 11:58:23,435 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,449 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 11:58:23,470 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,488 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:58:23,517 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 11:58:23,539 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 11:58:23,552 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 11:58:23,568 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 11:58:23,582 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 11:58:23,587 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 11:58:23,598 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 11:58:23,784 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=3&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:23,822 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXMLBGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:24,636 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10187&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:24,658 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNFLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:39,912 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNHLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:39,960 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10346&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:41,896 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNBAGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:58:41,919 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10345&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:59:00,791 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10210&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:59:00,810 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAAFGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:59:00,908 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNCAABGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 11:59:00,914 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=39&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:38,283 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,289 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,294 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 12:27:38,297 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 12:27:38,301 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,307 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 12:27:38,314 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,318 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 12:27:38,323 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 12:27:38,328 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,332 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 12:27:38,336 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 12:27:38,339 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 12:27:38,342 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 12:27:38,345 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 12:27:38,348 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,353 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,358 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 12:27:38,361 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 12:27:38,364 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,368 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 12:27:38,373 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,379 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 12:27:38,382 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 12:27:38,386 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,390 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 12:27:38,394 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 12:27:38,399 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 12:27:38,402 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 12:27:38,406 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 12:27:38,411 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Brewers Sproat (R)' home='Pirates Ashcraft (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,414 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Phillies Nola (R)' home='Tigers Flaherty (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,418 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Yankees Weathers (L)' home='Nationals Palmquist (L)' reason=unresolved_team_or_same_team scores=(0.514, 0.500)
+2026-07-10 12:27:38,422 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Royals Avila (R)' home='Orioles Young (R)' reason=unresolved_team_or_same_team scores=(0.424, 0.500)
+2026-07-10 12:27:38,424 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Cubs Imanaga (L)' home='Reds Greene (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,427 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Mariners Castillo (R)' home='Rays Martinez (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.581)
+2026-07-10 12:27:38,431 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Guardians Messick (L)' home='Marlins Alcantara (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,435 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Red Sox Gray (R)' home='Mets Mc Lean (R)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 12:27:38,439 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Athletics Lopez (L)' home='White Sox Burke (R)' reason=unresolved_team_or_same_team scores=(0.529, 0.667)
+2026-07-10 12:27:38,442 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Astros Brown (R)' home='Rangers Quantrill (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.500)
+2026-07-10 12:27:38,445 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Angels Rodriguez (R)' home='Twins Matthews (R)' reason=unresolved_team_or_same_team scores=(0.540, 0.500)
+2026-07-10 12:27:38,448 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Braves Sale (L)' home='Cardinals Leahy (R)' reason=unresolved_team_or_same_team scores=(0.500, 0.514)
+2026-07-10 12:27:38,452 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Blue Jays Bieber (R)' home='Padres Sears (L)' reason=unresolved_team_or_same_team scores=(0.667, 0.444)
+2026-07-10 12:27:38,455 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Diamondbacks Rodriguez (L)' home='Dodgers' reason=unresolved_team_or_same_team scores=(0.545, 1.000)
+2026-07-10 12:27:38,458 [WARNING] app.services.fetcher: Rejected sportsbook row [mlb]: away='Rockies Gordon (R)' home='Giants Ray (L)' reason=unresolved_team_or_same_team scores=(0.500, 0.467)
+2026-07-10 12:27:38,607 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXMLBGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:38,690 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=3&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:40,156 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNFLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:40,200 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10187&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:49,702 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNHLGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:49,752 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10346&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:50,336 [INFO] httpx: HTTP Request: GET https://api.elections.kalshi.com/trade-api/v2/markets?series_ticker=KXNBAGAME&status=open&limit=200 "HTTP/1.1 200 OK"
+2026-07-10 12:27:50,409 [INFO] httpx: HTTP Request: GET https://gamma-api.polymarket.com/events?series_id=10345&active=true&closed=false&limit=200 "HTTP/1.1 200 OK"

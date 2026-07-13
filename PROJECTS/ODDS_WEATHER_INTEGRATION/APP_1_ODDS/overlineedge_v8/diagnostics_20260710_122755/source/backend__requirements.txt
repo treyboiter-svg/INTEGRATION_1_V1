@@ -1,0 +1,15 @@
+# OverlineEdge v8 — Python 3.14 compatible
+# All packages use pre-built wheels (no C compiler, no Meson, no Visual Studio needed)
+
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+httpx==0.27.2
+pandas==3.0.4
+numpy==2.5.1
+openpyxl==3.1.5
+beautifulsoup4==4.12.3
+playwright==1.61.0
+pytz==2024.1
+thefuzz==0.22.1
+python-Levenshtein==0.27.3
+aiofiles==23.2.1

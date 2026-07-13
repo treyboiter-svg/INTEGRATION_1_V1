@@ -1,0 +1,3 @@
+﻿Venue DB path: C:\Users\treyb\Downloads\overlineedge_v8\overlineedge_v8\US_SPORTS_VENUES_MASTER_CORRECTED_V2.xlsx
+Exists: True
+Size bytes: 120151
