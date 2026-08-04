@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mlb-pitch-environment-live-dashboard-v44</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+:root{--bg:#f7f6f2;--panel:#fbfbf9;--panel2:#f3f0ec;--txt:#28251d;--muted:#7a7974;--line:#d4d1ca;--accent:#01696f;--warn:#964219;--bad:#a12c7b;--ok:#437a22}
+[data-theme="dark"]{--bg:#171614;--panel:#1c1b19;--panel2:#22211f;--txt:#cdccca;--muted:#9a9995;--line:#393836;--accent:#4f98a3;--warn:#bb653b;--bad:#d163a7;--ok:#6daa45}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font:15px/1.55 Inter,system-ui,sans-serif}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+.side{padding:18px;border-right:1px solid var(--line);background:var(--panel);position:sticky;top:0;height:100vh;overflow:auto}
+.main{padding:18px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.metric{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.metric strong{display:block;font-size:26px}
+.tiny{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.muted{color:var(--muted)}
+.toolbar,.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.toolbar{margin-top:10px}
+.btn{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;text-decoration:none;color:inherit}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.nav{display:grid;gap:8px;margin-top:14px}
+.nav a{text-decoration:none;color:inherit;padding:8px 10px;border-radius:10px}
+.nav a.active,.nav a:hover{background:var(--panel2)}
+.game-card{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:12px}
+.pill,.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:var(--panel);border:1px solid var(--line)}
+.badge.warn{border-color:var(--warn);color:var(--warn)}
+.badge.closed{border-color:var(--bad);color:var(--bad)}
+.badge.out{border-color:var(--ok);color:var(--ok)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.chart{height:340px}
+.scroll{overflow:auto;max-height:70vh}
+table{width:100%;border-collapse:collapse}
+th,td{padding:8px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{position:sticky;top:0;background:var(--panel)}
+.pages>.page{display:none}
+.pages>.page.active{display:block}
+.drawer{position:fixed;top:0;right:-520px;width:500px;max-width:96vw;height:100vh;background:var(--panel);border-left:1px solid var(--line);padding:16px;overflow:auto;transition:right .2s ease;z-index:50}
+.drawer.open{right:0}
+.tooltip{border-bottom:1px dotted var(--muted);cursor:help}
+input[type=file]{display:none}
+@media (max-width:980px){.app{grid-template-columns:1fr}.side{height:auto;position:relative}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="tiny">Full forensic audit dashboard</div>
+    <h2 style="margin:.25rem 0 0">MLB Pitch Environment V44</h2>
+    <div class="muted">Preserves V36 UI. Adds forensic audit layers + glossary.</div>
+    <div class="toolbar">
+      <button class="btn" id="themeToggle">Toggle theme</button>
+      <button class="btn" id="openGlossary">Glossary</button>
+    </div>
+    <div class="toolbar">
+      <button class="btn" id="exportBundle">Export bundle JSON</button>
+      <button class="btn" id="exportHealth">Export health JSON</button>
+      <button class="btn" id="exportEnv">Export environment CSV</button>
+      <button class="btn" id="exportPitch">Export pitch CSV</button>
+    </div>
+    <div class="toolbar">
+      <label class="btn" for="importFile">Import CSV / JSON</label>
+      <input id="importFile" type="file" accept=".json,.csv" multiple>
+    </div>
+    <input id="searchGames" style="width:100%;margin-top:12px;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)" placeholder="Search game, venue, pitcher">
+    <nav class="nav" id="nav"></nav>
+  </aside>
+  <main class="main">
+    <div class="panel row" style="justify-content:space-between"><div><div class="tiny">Run context</div><h1 id="pageTitle" style="margin:.2rem 0">Overview</h1></div><div class="muted" id="meta"></div></div>
+    <div class="pages">
+      <section class="page active" id="page-overview"></section>
+      <section class="page" id="page-health"></section>
+      <section class="page" id="page-atmos"></section>
+      <section class="page" id="page-density"></section>
+      <section class="page" id="page-roof"></section>
+      <section class="page" id="page-pitchers"></section>
+      <section class="page" id="page-game"></section>
+    </div>
+  </main>
+</div>
+<div class="drawer" id="glossaryDrawer">
+  <div class="row" style="justify-content:space-between"><h2 style="margin:0">Glossary</h2><button class="btn" id="closeGlossary">Close</button></div>
+  <input id="glossarySearch" style="width:100%;margin:10px 0;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--panel2)" placeholder="Search glossary">
+  <div id="glossaryList"></div>
+</div>
+<script>
+let state = {meta:{},summary:{},games:[],game_environment_audit:[],roof_evidence_audit:[],roof_conflict_audit:[],pitcher_query_audit:[],pitch_physics_environment:[],pitch_effect_decomposition:[],atmosphere_provenance_audit:[],density_calculation_audit:[],findings:[],run_health_and_model_diagnostics:[],dashboard_debug_snapshot:{},glossary:[]};
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const fmt=new Intl.NumberFormat('en-US'); const fmt3=new Intl.NumberFormat('en-US',{maximumFractionDigits:3}); const dtf=new Intl.DateTimeFormat('en-US',{dateStyle:'medium',timeStyle:'short'});
+function exportBlob(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+function toCSV(rows){if(!rows?.length) return ''; const cols=[...new Set(rows.flatMap(r=>Object.keys(r)))]; const esc=v=>`"${String(v??'').replaceAll('"','""')}"`; return [cols.join(','),...rows.map(r=>cols.map(c=>esc(r[c])).join(','))].join('\n')}
+function parseCSV(text){const lines=text.trim().split(/\r?\n/); if(lines.length<2) return []; const cols=lines[0].split(',').map(s=>s.replace(/^"|"$/g,'')); return lines.slice(1).map(line=>{const parts=[]; let cur='',q=false; for(let i=0;i<line.length;i++){const ch=line[i]; if(ch==='"'){ if(q && line[i+1]==='"'){cur+='"'; i++;} else q=!q; } else if(ch===',' && !q){ parts.push(cur); cur=''; } else cur+=ch; } parts.push(cur); const obj={}; cols.forEach((c,i)=>obj[c]=parts[i]??''); return obj;});}
+function parseMaybeJSON(v){try{return typeof v==='string'?JSON.parse(v):v}catch{return v}}
+function tt(field,label){const g=(state.glossary||[]).find(x=>x.field===field); const title=g?`${g.meaning} | Units: ${g.units||''} | Source: ${g.source_or_origin||''} | Derivation: ${g.derivation_or_logic||''}`:field; return `<span class="tooltip" title="${title.replace(/"/g,'&quot;')}">${label||field}</span>`;}
+function healthExport(){return {summary:state.summary,diagnostics:state.run_health_and_model_diagnostics,findings:state.findings}}
+function slugGame(g){return `game-${g.game_pk}`}
+function normalizeState(raw){
+  const next={meta:raw.meta||{},summary:raw.summary||{},games:raw.games||[],game_environment_audit:raw.game_environment_audit||[],roof_evidence_audit:raw.roof_evidence_audit||[],roof_conflict_audit:raw.roof_conflict_audit||[],pitcher_query_audit:raw.pitcher_query_audit||[],pitch_physics_environment:raw.pitch_physics_environment||[],pitch_effect_decomposition:raw.pitch_effect_decomposition||[],atmosphere_provenance_audit:raw.atmosphere_provenance_audit||[],density_calculation_audit:raw.density_calculation_audit||[],findings:raw.findings||[],run_health_and_model_diagnostics:raw.run_health_and_model_diagnostics||[],dashboard_debug_snapshot:raw.dashboard_debug_snapshot||{},glossary:raw.glossary||[]};
+  if(!next.games.length && next.game_environment_audit.length){
+    const seen=new Map();
+    next.game_environment_audit.forEach(r=>{ if(!seen.has(String(r.game_pk))) seen.set(String(r.game_pk), {game_pk:r.game_pk, game_datetime_utc:r.game_datetime_utc, venue_name:r.venue_name||r.venue_name_api, venue_name_api:r.venue_name_api||r.venue_name, roofclass:r.roofclass, roof_state:r.roof_state, roof_decision_reason:r.roof_decision_reason, ballparkelevationm:r.ballparkelevationm}); });
+    next.games=[...seen.values()];
+  }
+  return next;
+}
+function buildNav(){
+  const gameLinks=(state.games||[]).map(g=>`<a href="#${slugGame(g)}" data-page="game">${g.venue_name||g.venue_name_api||g.game_pk}</a>`).join('');
+  $('#nav').innerHTML = `<a href="#overview" data-page="overview">Overview</a><a href="#health" data-page="health">System health</a><a href="#atmos" data-page="atmos">Atmosphere provenance</a><a href="#density" data-page="density">Density audit</a><a href="#roof" data-page="roof">Roof conflicts</a><a href="#pitchers" data-page="pitchers">Pitchers / pitch effects</a>${gameLinks}`;
+}
+function activate(page){ $$('.page').forEach(p=>p.classList.remove('active')); $('#page-'+page).classList.add('active'); $$('#nav a').forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+location.hash.slice(1))); }
+function renderOverview(){
+  const s=state.summary||{};
+  const densities=state.game_environment_audit.map(r=>Number(r.air_density_kg_m3)).filter(Number.isFinite);
+  const cards=(state.games||[]).map(g=>{
+    const branches=state.game_environment_audit.filter(r=>String(r.game_pk)===String(g.game_pk)).map(r=>r.branch).join(' · ');
+    const cls = (g.roof_state==='CONFLICTED'||g.roof_state==='UNRESOLVED_RETRACTABLE_ONLY') ? 'warn' : (g.roof_state==='CLOSED'||g.roof_state==='FIXED_CLOSED' ? 'closed' : 'out');
+    return `<div class="game-card"><div class="row" style="justify-content:space-between"><div><div class="tiny">Game ${g.game_pk}</div><h3 style="margin:.25rem 0 .2rem">${g.venue_name}</h3><div class="muted">${g.game_datetime_utc ? dtf.format(new Date(g.game_datetime_utc)) : ''}</div></div><span class="badge ${cls}">${String(g.roof_state||'').replaceAll('_',' ')}</span></div><div class="row" style="margin-top:.75rem"><span class="pill">${branches||'No branches'}</span><a class="btn" href="#${slugGame(g)}">Open game page</a></div></div>`;
+  }).join('');
+  $('#page-overview').innerHTML = `<div class="metrics">
+    <div class="metric"><div class="tiny">Games</div><strong>${fmt.format(s.scheduled_games||state.games.length)}</strong><span class="muted">Loaded into dashboard</span></div>
+    <div class="metric"><div class="tiny">Pitch rows</div><strong>${fmt.format(s.pitch_physics_rows||state.pitch_effect_decomposition.length)}</strong><span class="muted">Pitch physics rows</span></div>
+    <div class="metric"><div class="tiny">Conflicted roofs</div><strong>${fmt.format(s.conflicted_roof_games||0)}</strong><span class="muted">Need review</span></div>
+    <div class="metric"><div class="tiny">Dual branches</div><strong>${fmt.format(s.dual_branch_games||0)}</strong><span class="muted">Open/closed modeled</span></div>
+    <div class="metric"><div class="tiny">Density range</div><strong>${densities.length ? fmt3.format(Math.max(...densities)-Math.min(...densities)) : '0'}</strong><span class="muted">kg/m^3</span></div>
+  </div>
+  <div class="panel"><div class="tiny">Quick exports</div><div class="toolbar">
+    <button class="btn" onclick="exportBlob('mlb_dashboard_data_bundle.json', JSON.stringify(state,null,2), 'application/json')">Full bundle JSON</button>
+    <button class="btn" onclick="exportBlob('mlb_dashboard_system_health.json', JSON.stringify(healthExport(),null,2), 'application/json')">Health JSON</button>
+    <button class="btn" onclick="exportBlob('game_environment_audit.csv', toCSV(state.game_environment_audit), 'text/csv')">Environment CSV</button>
+  </div></div>
+  <div class="panel"><div class="tiny">Air density</div><h3 style="margin:.3rem 0 .9rem">Venue density profile</h3><div id="densityChart" class="chart"></div></div>
+  <div class="grid2">${cards}</div>`;
+  const rows=state.game_environment_audit.map(r=>({x:`${r.venue_name} · ${r.branch}`, y:Number(r.air_density_kg_m3), roof:r.roof_state})).filter(r=>Number.isFinite(r.y));
+  if(window.Plotly && rows.length){
+    Plotly.newPlot('densityChart', [{type:'bar', x:rows.map(r=>r.x), y:rows.map(r=>r.y), marker:{color:rows.map(r=>r.roof==='CONFLICTED'?'#a12c7b':(r.roof==='CLOSED'||r.roof==='FIXED_CLOSED'?'#964219':'#01696f'))}}], {paper_bgcolor:'transparent',plot_bgcolor:'transparent',margin:{l:40,r:20,t:10,b:110},yaxis:{title:'Air density kg/m^3'},xaxis:{tickangle:-30},font:{color:getComputedStyle(document.body).color}}, {displayModeBar:false,responsive:true});
+  }
+}
+function renderHealth(){
+  const s=state.summary||{};
+  $('#page-health').innerHTML = `<div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Diagnostics interface</div><h2 style="margin:.2rem 0">System health</h2><p class="muted">Self-diagnosing: must reveal roof conflicts, missing provenance, and incomplete pitch decomposition without any other file.</p></div><div class="toolbar"><button class="btn primary" onclick="exportBlob('mlb_dashboard_system_health.json', JSON.stringify(healthExport(),null,2), 'application/json')">Export health JSON</button><button class="btn" onclick="exportBlob('findings.csv', toCSV(state.findings), 'text/csv')">Export findings CSV</button></div></div>
+  <div class="metrics">
+    <div class="metric"><div class="tiny">Games</div><strong>${fmt.format(s.scheduled_games||0)}</strong></div>
+    <div class="metric"><div class="tiny">Starters resolved</div><strong>${fmt.format(s.starters_resolved||0)}</strong></div>
+    <div class="metric"><div class="tiny">Conflicted roofs</div><strong>${fmt.format(s.conflicted_roof_games||0)}</strong></div>
+    <div class="metric"><div class="tiny">Dual branches</div><strong>${fmt.format(s.dual_branch_games||0)}</strong></div>
+    <div class="metric"><div class="tiny">Missing pressure provenance</div><strong>${fmt.format(s.missing_pressure_provenance_rows||0)}</strong></div>
+    <div class="metric"><div class="tiny">Missing density terms</div><strong>${fmt.format(s.missing_density_term_rows||0)}</strong></div>
+    <div class="metric"><div class="tiny">Missing pitch baselines</div><strong>${fmt.format(s.missing_pitch_baseline_rows||0)}</strong></div>
+    <div class="metric"><div class="tiny">Missing pitch deltas</div><strong>${fmt.format(s.pitch_rows_missing_delta_fields||0)}</strong></div>
+    <div class="metric"><div class="tiny">Findings</div><strong>${fmt.format(s.findings||state.findings.length)}</strong></div>
+  </div></div>
+  <div class="panel"><div class="tiny">Diagnostics</div><div class="scroll"><table><thead><tr><th>Check</th><th>Value</th><th>Status</th></tr></thead><tbody>${state.run_health_and_model_diagnostics.map(r=>`<tr><td>${r.check}</td><td>${r.value}</td><td>${r.status}</td></tr>`).join('')}</tbody></table></div></div>
+  <div class="panel"><div class="tiny">Findings</div><div class="scroll"><table><thead><tr><th>Severity</th><th>Code</th><th>Entity</th><th>Message</th><th>Action</th></tr></thead><tbody>${state.findings.map(r=>`<tr><td>${r.severity}</td><td>${r.code}</td><td>${r.entity}</td><td>${r.message}</td><td>${r.action}</td></tr>`).join('')||'<tr><td colspan="5">No findings.</td></tr>'}</tbody></table></div></div>`;
+}
+function renderAtmos(){
+  $('#page-atmos').innerHTML = `<div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Atmosphere provenance</div><h2 style="margin:.2rem 0">Source lineage</h2></div><button class="btn" onclick="exportBlob('atmosphere_provenance_audit.csv', toCSV(state.atmosphere_provenance_audit), 'text/csv')">Export CSV</button></div>
+  <div class="scroll"><table><thead><tr><th>${tt('game_pk')}</th><th>${tt('venue_name')}</th><th>${tt('branch')}</th><th>${tt('provider')}</th><th>${tt('model_identifier')}</th><th>${tt('selected_forecast_hour_utc')}</th><th>${tt('pressure_provenance')}</th></tr></thead><tbody>${state.atmosphere_provenance_audit.map(r=>`<tr><td>${r.game_pk}</td><td>${r.venue_name}</td><td>${r.branch}</td><td>${r.provider||''}</td><td>${r.model_identifier||''}</td><td>${r.selected_forecast_hour_utc||''}</td><td>${r.pressure_provenance||''}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function renderDensity(){
+  $('#page-density').innerHTML = `<div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Density audit</div><h2 style="margin:.2rem 0">Intermediate terms</h2></div><button class="btn" onclick="exportBlob('density_calculation_audit.csv', toCSV(state.density_calculation_audit), 'text/csv')">Export CSV</button></div>
+  <div class="scroll"><table><thead><tr><th>${tt('game_pk')}</th><th>${tt('venue_name')}</th><th>${tt('branch')}</th><th>${tt('temperature_c')}</th><th>${tt('relative_humidity_pct')}</th><th>${tt('pressure_hpa')}</th><th>${tt('vapor_pressure_hpa')}</th><th>${tt('dry_air_partial_pressure_hpa')}</th><th>${tt('temperature_k')}</th><th>${tt('air_density_kg_m3')}</th><th>${tt('density_ratio_to_ref')}</th></tr></thead><tbody>${state.density_calculation_audit.map(r=>`<tr><td>${r.game_pk}</td><td>${r.venue_name}</td><td>${r.branch}</td><td>${r.temperature_c}</td><td>${r.relative_humidity_pct}</td><td>${r.pressure_hpa}</td><td>${r.vapor_pressure_hpa}</td><td>${r.dry_air_partial_pressure_hpa}</td><td>${r.temperature_k}</td><td>${r.air_density_kg_m3}</td><td>${r.density_ratio_to_ref}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function renderRoof(){
+  $('#page-roof').innerHTML = `<div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Roof-source evidence</div><h2 style="margin:.2rem 0">Parser audit table</h2></div><button class="btn" onclick="exportBlob('roof_evidence_audit.csv', toCSV(state.roof_evidence_audit), 'text/csv')">Export evidence CSV</button></div>
+  <div class="scroll"><table><thead><tr><th>Game</th><th>Venue</th><th>Source</th><th>Vote</th><th>Status</th><th>HTTP</th></tr></thead><tbody>${state.roof_evidence_audit.map(r=>`<tr><td>${r.game_pk}</td><td>${r.venue_name||''}</td><td>${r.source}</td><td>${r.vote||'—'}</td><td>${r.parser_status||''}</td><td>${r.http_status||''}</td></tr>`).join('')}</tbody></table></div></div>
+  <div class="panel"><div class="tiny">Resolved conflicts</div><div class="scroll"><table><thead><tr><th>Game</th><th>Venue</th><th>Final roof</th><th>Branch strategy</th><th>Reason</th></tr></thead><tbody>${state.roof_conflict_audit.map(r=>`<tr><td>${r.game_pk}</td><td>${r.venue_name||''}</td><td>${r.final_roof_state||''}</td><td>${r.branch_strategy||''}</td><td>${r.decision_reason||''}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function renderPitchers(){
+  $('#page-pitchers').innerHTML = `<div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Pitch decomposition</div><h2 style="margin:.2rem 0">Baseline vs. environment-adjusted</h2></div><button class="btn" onclick="exportBlob('pitch_effect_decomposition.csv', toCSV(state.pitch_effect_decomposition), 'text/csv')">Export CSV</button></div>
+  <div class="scroll"><table><thead><tr><th>${tt('game_pk')}</th><th>${tt('venue_name')}</th><th>${tt('pitcher_name')}</th><th>${tt('pitch_type')}</th><th>${tt('branch')}</th><th>${tt('roof_branch_assumption')}</th><th>${tt('baseline_release_speed_mph')}</th><th>${tt('baseline_release_spin_rate_rpm')}</th><th>${tt('baseline_pfx_x_inches')}</th><th>${tt('baseline_pfx_z_inches')}</th><th>${tt('delta_pfx_x_inches')}</th><th>${tt('delta_pfx_z_inches')}</th><th>${tt('delta_carry_density_ft_400ft')}</th><th>${tt('delta_carry_wind_ft_400ft')}</th><th>Complete</th></tr></thead><tbody>${state.pitch_effect_decomposition.map(r=>`<tr><td>${r.game_pk}</td><td>${r.venue_name||''}</td><td>${r.pitcher_name||''}</td><td>${r.pitch_type||''}</td><td>${r.branch||''}</td><td>${r.roof_branch_assumption||''}</td><td>${r.baseline_release_speed_mph??''}</td><td>${r.baseline_release_spin_rate_rpm??''}</td><td>${r.baseline_pfx_x_inches??''}</td><td>${r.baseline_pfx_z_inches??''}</td><td>${r.delta_pfx_x_inches??''}</td><td>${r.delta_pfx_z_inches??''}</td><td>${r.delta_carry_density_ft_400ft??''}</td><td>${r.delta_carry_wind_ft_400ft??''}</td><td>${r.decomposition_complete}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+function renderGame(gamePk){
+  const g=(state.games||[]).find(x=>String(x.game_pk)===String(gamePk));
+  const rows=state.game_environment_audit.filter(r=>String(r.game_pk)===String(gamePk));
+  const evidence=state.roof_evidence_audit.filter(r=>String(r.game_pk)===String(gamePk));
+  const conf=state.roof_conflict_audit.filter(r=>String(r.game_pk)===String(gamePk));
+  const atmos=state.atmosphere_provenance_audit.filter(r=>String(r.game_pk)===String(gamePk));
+  const dens=state.density_calculation_audit.filter(r=>String(r.game_pk)===String(gamePk));
+  const pitch=state.pitch_effect_decomposition.filter(r=>String(r.game_pk)===String(gamePk));
+  const findings=state.findings.filter(r=>String(r.entity||'').includes(String(gamePk)));
+  const votes = rows[0] && rows[0].roof_votes_json ? Object.entries(parseMaybeJSON(rows[0].roof_votes_json)||{}).map(([k,v])=>`<span class="pill">${k}: ${v||'null'}</span>`).join(' ') : '';
+  $('#page-game').innerHTML = `<div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Game page</div><h2 style="margin:.2rem 0">${g?.venue_name||('Game '+gamePk)}</h2><p class="muted">Game ${gamePk} · ${g?.game_datetime_utc ? dtf.format(new Date(g.game_datetime_utc)) : ''}</p></div><div class="toolbar"><button class="btn" onclick='exportBlob("game_${gamePk}.json", JSON.stringify({game:${JSON.stringify(g||{})}, environment:${JSON.stringify(rows)}, roof_evidence:${JSON.stringify(evidence)}, roof_conflict:${JSON.stringify(conf)}, atmosphere:${JSON.stringify(atmos)}, density:${JSON.stringify(dens)}, pitch_effects:${JSON.stringify(pitch)}}, null, 2), "application/json")'>Export game JSON</button><button class="btn" onclick='exportBlob("game_${gamePk}_environment.csv", toCSV(${JSON.stringify(rows)}), "text/csv")'>Export game CSV</button></div></div>
+  <div class="metrics">
+    <div class="metric"><div class="tiny">Roof class</div><strong>${g?.roofclass||''}</strong></div>
+    <div class="metric"><div class="tiny">Roof state</div><strong>${g?.roof_state||''}</strong><span class="muted">${g?.roof_decision_reason||''}</span></div>
+    <div class="metric"><div class="tiny">Elevation</div><strong>${fmt3.format(Number(g?.ballparkelevationm||0))} m</strong></div>
+    <div class="metric"><div class="tiny">Branches</div><strong>${rows.length}</strong></div>
+  </div></div>
+  <div class="grid2">
+    <div class="panel"><div class="tiny">Environment branches</div><h3 style="margin:.3rem 0 .9rem">Branch table</h3><table><thead><tr><th>Branch</th><th>Density</th><th>Temp C</th><th>RH %</th><th>Pressure</th><th>Wind</th><th>Status</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r.branch}</td><td>${r.air_density_kg_m3}</td><td>${r.temperature_c}</td><td>${r.relative_humidity_pct}</td><td>${r.pressure_hpa}</td><td>${r.external_wind_speed_kmh}</td><td>${r.wind_model_status}</td></tr>`).join('')}</tbody></table></div>
+    <div class="panel"><div class="tiny">Roof votes</div><h3 style="margin:.3rem 0 .9rem">Decision trace</h3><div>${votes||'<span class="muted">No vote map loaded.</span>'}</div></div>
+  </div>
+  <div class="panel"><div class="tiny">Weather provenance</div><table><thead><tr><th>Branch</th><th>Provider</th><th>Model</th><th>Forecast hour</th><th>Pressure provenance</th></tr></thead><tbody>${atmos.map(r=>`<tr><td>${r.branch}</td><td>${r.provider||''}</td><td>${r.model_identifier||''}</td><td>${r.selected_forecast_hour_utc||''}</td><td>${r.pressure_provenance||''}</td></tr>`).join('')||'<tr><td colspan="5">No atmosphere rows.</td></tr>'}</tbody></table></div>
+  <div class="panel"><div class="tiny">Density calculation block</div><table><thead><tr><th>Branch</th><th>T</th><th>RH</th><th>P</th><th>Vapor P</th><th>Dry-air P</th><th>rho</th><th>ratio</th></tr></thead><tbody>${dens.map(r=>`<tr><td>${r.branch}</td><td>${r.temperature_c}</td><td>${r.relative_humidity_pct}</td><td>${r.pressure_hpa}</td><td>${r.vapor_pressure_hpa}</td><td>${r.dry_air_partial_pressure_hpa}</td><td>${r.air_density_kg_m3}</td><td>${r.density_ratio_to_ref}</td></tr>`).join('')||'<tr><td colspan="8">No density rows.</td></tr>'}</tbody></table></div>
+  <div class="panel"><div class="row" style="justify-content:space-between"><div><div class="tiny">Evidence rows</div><h3 style="margin:.3rem 0 .2rem">Source parser evidence</h3></div><button class="btn" onclick='exportBlob("game_${gamePk}_roof_evidence.csv", toCSV(${JSON.stringify(evidence)}), "text/csv")'>Export roof evidence</button></div><table style="margin-top:.8rem"><thead><tr><th>Source</th><th>Vote</th><th>Parser status</th><th>HTTP</th><th>Chars</th></tr></thead><tbody>${evidence.map(r=>`<tr><td>${r.source}</td><td>${r.vote||'—'}</td><td>${r.parser_status}</td><td>${r.http_status}</td><td>${r.page_char_length}</td></tr>`).join('')}</tbody></table></div>
+  <div class="panel"><div class="tiny">Baseline vs. adjusted pitch table</div><table><thead><tr><th>Pitcher</th><th>Type</th><th>Branch</th><th>Base velo</th><th>Base spin</th><th>dX</th><th>dZ</th><th>dCarry rho</th><th>dCarry wind</th></tr></thead><tbody>${pitch.map(r=>`<tr><td>${r.pitcher_name||''}</td><td>${r.pitch_type||''}</td><td>${r.branch||''}</td><td>${r.baseline_release_speed_mph??''}</td><td>${r.baseline_release_spin_rate_rpm??''}</td><td>${r.delta_pfx_x_inches??''}</td><td>${r.delta_pfx_z_inches??''}</td><td>${r.delta_carry_density_ft_400ft??''}</td><td>${r.delta_carry_wind_ft_400ft??''}</td></tr>`).join('')||'<tr><td colspan="9">No pitch rows.</td></tr>'}</tbody></table></div>
+  <div class="panel"><div class="tiny">Findings feed scoped to this game</div><table><thead><tr><th>Severity</th><th>Code</th><th>Message</th></tr></thead><tbody>${findings.map(r=>`<tr><td>${r.severity}</td><td>${r.code}</td><td>${r.message}</td></tr>`).join('')||'<tr><td colspan="3">No game-scoped findings.</td></tr>'}</tbody></table></div>`;
+}
+function renderGlossary(){
+  const q=$('#glossarySearch').value.toLowerCase().trim();
+  $('#glossaryList').innerHTML=(state.glossary||[]).filter(r=>!q||JSON.stringify(r).toLowerCase().includes(q)).map(r=>`<div class="panel"><div class="tiny">${r.section}</div><h3 style="margin:.25rem 0">${r.field}</h3><div><strong>Units:</strong> ${r.units||''}</div><div><strong>Meaning:</strong> ${r.meaning||''}</div><div><strong>Source:</strong> ${r.source_or_origin||''}</div><div><strong>Derivation:</strong> ${r.derivation_or_logic||''}</div></div>`).join('');
+}
+function route(){
+  const h=location.hash.slice(1)||'overview';
+  if(h==='overview'){ $('#pageTitle').textContent='Overview'; activate('overview'); renderOverview(); }
+  else if(h==='health'){ $('#pageTitle').textContent='System health'; activate('health'); renderHealth(); }
+  else if(h==='atmos'){ $('#pageTitle').textContent='Atmosphere provenance'; activate('atmos'); renderAtmos(); }
+  else if(h==='density'){ $('#pageTitle').textContent='Density audit'; activate('density'); renderDensity(); }
+  else if(h==='roof'){ $('#pageTitle').textContent='Roof conflicts'; activate('roof'); renderRoof(); }
+  else if(h==='pitchers'){ $('#pageTitle').textContent='Pitchers / pitch effects'; activate('pitchers'); renderPitchers(); }
+  else if(h.startsWith('game-')){ $('#pageTitle').textContent='Game page'; activate('game'); renderGame(h.replace('game-','')); }
+}
+async function loadBundle(){
+  try{
+    const r=await fetch('./mlb_dashboard_data_bundle.json',{cache:'no-store'});
+    const raw=await r.json();
+    state=normalizeState(raw);
+    $('#meta').textContent=state.meta?.run_dir||'';
+    buildNav(); route(); renderGlossary();
+  }catch(e){ $('#meta').textContent='No bundle found in this directory yet.'; }
+}
+$('#exportBundle').addEventListener('click', ()=>exportBlob('mlb_dashboard_data_bundle.json', JSON.stringify(state,null,2), 'application/json'));
+$('#exportHealth').addEventListener('click', ()=>exportBlob('mlb_dashboard_system_health.json', JSON.stringify(healthExport(),null,2), 'application/json'));
+$('#exportEnv').addEventListener('click', ()=>exportBlob('game_environment_audit.csv', toCSV(state.game_environment_audit), 'text/csv'));
+$('#exportPitch').addEventListener('click', ()=>exportBlob('pitch_effect_decomposition.csv', toCSV(state.pitch_effect_decomposition), 'text/csv'));
+$('#openGlossary').addEventListener('click', ()=>$('#glossaryDrawer').classList.add('open'));
+$('#closeGlossary').addEventListener('click', ()=>$('#glossaryDrawer').classList.remove('open'));
+$('#glossarySearch').addEventListener('input', renderGlossary);
+$('#searchGames').addEventListener('input', e=>{const q=e.target.value.toLowerCase(); $$('#nav a[data-page="game"]').forEach(a=>a.style.display=a.textContent.toLowerCase().includes(q)?'':'none');});
+$('#importFile').addEventListener('change', async e=>{
+  const files=[...e.target.files]; if(!files.length) return;
+  let next={...state};
+  for(const f of files){
+    const text=await f.text(); const name=f.name.toLowerCase();
+    if(name.endsWith('.json')){ try{ const raw=JSON.parse(text); if(raw.games || raw.game_environment_audit || raw.pitch_effect_decomposition) next=normalizeState(raw); }catch{} }
+    else if(name.includes('game_environment')) next.game_environment_audit=parseCSV(text);
+    else if(name.includes('roof_evidence')) next.roof_evidence_audit=parseCSV(text);
+    else if(name.includes('roof_conflict')) next.roof_conflict_audit=parseCSV(text);
+    else if(name.includes('pitcher_query')) next.pitcher_query_audit=parseCSV(text);
+    else if(name.includes('density_calculation')) next.density_calculation_audit=parseCSV(text);
+    else if(name.includes('atmosphere_provenance')) next.atmosphere_provenance_audit=parseCSV(text);
+    else if(name.includes('pitch_effect_decomposition')) next.pitch_effect_decomposition=parseCSV(text);
+    else if(name.includes('findings')) next.findings=parseCSV(text);
+  }
+  state=normalizeState(next); buildNav(); route(); renderGlossary();
+});
+(function(){
+  const t=$('#themeToggle'); let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  document.documentElement.setAttribute('data-theme',d);
+  t.addEventListener('click', ()=>{ d = d==='dark'?'light':'dark'; document.documentElement.setAttribute('data-theme',d); route(); });
+})();
+window.addEventListener('hashchange', route);
+loadBundle();
+</script>
+</body>
+</html>
