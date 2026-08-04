@@ -1,0 +1,9 @@
+test,status,detail
+compile_main_v36,PASS,MLB_DAILY_PITCH_ENVIRONMENT_V36.py compiled successfully
+compile_builder_v36,PASS,build_dashboard_bundle_V36.py compiled successfully
+standalone_builder_handles_zero_byte_findings,PASS,ok
+main_write_bundle_handles_zero_byte_findings,PASS,write_bundle_files emitted both dashboard JSON files on zero-byte findings.csv
+empty_health_frame_has_contract_headers,PASS,"['severity', 'code', 'entity', 'message', 'action']"
+run_bat_points_to_v36_and_builder_v36,PASS,launcher targets updated V36 files
+open_bat_points_to_builder_v36,PASS,open launcher targets updated builder
+dashboard_html_references_bundle_name,PASS,dashboard expects mlb_dashboard_data_bundle.json

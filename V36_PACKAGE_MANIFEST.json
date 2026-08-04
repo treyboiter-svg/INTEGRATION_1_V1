@@ -1,0 +1,53 @@
+{
+  "root_cause": "V33 crashed when findings.csv existed but was zero-byte; pandas.read_csv raised EmptyDataError during bundle generation.",
+  "corrected_files": [
+    "MLB_DAILY_PITCH_ENVIRONMENT_V36.py",
+    "build_dashboard_bundle.py",
+    "RUN_DAILY_MLB_DASHBOARD_V36.bat",
+    "OPEN_LATEST_MLB_DASHBOARD_V36.bat",
+    "mlb-pitch-environment-live-dashboard.html"
+  ],
+  "tests_passed": [
+    {
+      "test": "compile_main_v36",
+      "status": "PASS",
+      "detail": "MLB_DAILY_PITCH_ENVIRONMENT_V36.py compiled successfully"
+    },
+    {
+      "test": "compile_builder_v36",
+      "status": "PASS",
+      "detail": "build_dashboard_bundle_V36.py compiled successfully"
+    },
+    {
+      "test": "standalone_builder_handles_zero_byte_findings",
+      "status": "PASS",
+      "detail": "ok"
+    },
+    {
+      "test": "main_write_bundle_handles_zero_byte_findings",
+      "status": "PASS",
+      "detail": "write_bundle_files emitted both dashboard JSON files on zero-byte findings.csv"
+    },
+    {
+      "test": "empty_health_frame_has_contract_headers",
+      "status": "PASS",
+      "detail": "['severity', 'code', 'entity', 'message', 'action']"
+    },
+    {
+      "test": "run_bat_points_to_v36_and_builder_v36",
+      "status": "PASS",
+      "detail": "launcher targets updated V36 files"
+    },
+    {
+      "test": "open_bat_points_to_builder_v36",
+      "status": "PASS",
+      "detail": "open launcher targets updated builder"
+    },
+    {
+      "test": "dashboard_html_references_bundle_name",
+      "status": "PASS",
+      "detail": "dashboard expects mlb_dashboard_data_bundle.json"
+    }
+  ],
+  "package_zip": "output/MLB_DAILY_DASHBOARD_V36_FULL_PACKAGE.zip"
+}
