@@ -1,4 +1,0 @@
-﻿{
-    "StatusCode":  200,
-    "Content":  "{\"status\":\"ok\",\"cache_age_seconds\":1800,\"sports\":[\"mlb\",\"nfl\",\"nba\",\"nhl\",\"ncaaf\",\"ncaab\"]}"
-}
